@@ -7,9 +7,10 @@ struct st
     struct st *next;
 };
 
-// void add_pos(struct st *head,int,int);
 
-struct st *delet_node(struct st *head);
+
+void add_pos(struct st *head,int,int);
+
 
 
 
@@ -32,35 +33,49 @@ void main()
 
     head->next->next = current;
 
-    // int data=69;
-    // add_pos(head,data,2);
-    head = delet_node(head);
+
+
+int data=69;
+add_pos(head,data,2);
+
+
 
     struct st *ptr = malloc(sizeof(struct st));
     ptr = head;
     while (ptr != NULL)
     {
         printf("----->%d \n", ptr->rollno);
-
-        ptr = ptr->next;
+    
+    ptr=ptr->next;
     }
 }
 
 
+////////////////////*****node_add_pos_2*****///////////////////
 
-//*************** first node is delelt*************************//
 
-struct st *delet_node(struct st *head)
+void add_pos(struct st *head,int data,int pos)
 {
-    if (head == 0)
-        printf("node is empty\n");
-    else
-    {
-        struct st *temp = head;
 
-        head = head->next;
-        free(temp);
-        temp = NULL;
-    }
-    return head;
+ struct st *ptr=head;           // ptr point to head
+struct st *ptr2 = malloc(sizeof(struct st));//  node is  created
+ptr2->rollno=data;
+ptr2->next=NULL;
+pos--;
+while(pos!=1)
+{
+ptr=ptr->next;
+pos--;
 }
+ptr2->next=ptr->next;           // link node next add
+ptr->next=ptr2;                  // 
+
+
+
+}
+
+
+
+
+
+
